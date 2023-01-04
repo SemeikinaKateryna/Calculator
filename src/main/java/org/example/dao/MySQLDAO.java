@@ -22,6 +22,10 @@ public class MySQLDAO{
             + "(expression,result) VALUES(?, ?) ";
     public static String SELECT_EXPRESSION_BY_RESULT = "SELECT * FROM " + NAME_OF_TABLE_EXPRESSION
             + " WHERE result = ?";
+    public static String SELECT_EXPRESSION_BY_MORE_RESULT = "SELECT * FROM " + NAME_OF_TABLE_EXPRESSION
+            + " WHERE result > ?";
+    public static String SELECT_EXPRESSION_BY_LESS_RESULT = "SELECT * FROM " + NAME_OF_TABLE_EXPRESSION
+            + " WHERE result < ?";
     public static String UPDATE_EXPRESSION_RESULT = "UPDATE " + NAME_OF_TABLE_EXPRESSION +
             " SET expression = ?, result = ? WHERE idExpression = ?";
 
@@ -65,7 +69,7 @@ public class MySQLDAO{
         }
     }
 
-    /** Получение обьекта по заданному параметру (результату)*/
+    /** Получение обьекта по заданному параметру (=результату/>результата/<результата)*/
     static public void getExpressionByResult(double result){
         try (Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)) {
             PreparedStatement ps = conn.prepareStatement(SELECT_EXPRESSION_BY_RESULT);
@@ -83,6 +87,38 @@ public class MySQLDAO{
         }
     }
 
+    static public void getExpressionByMoreResult(double result){
+        try (Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)) {
+            PreparedStatement ps = conn.prepareStatement(SELECT_EXPRESSION_BY_MORE_RESULT);
+            ps.setDouble(1, result);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println(" idExpression : " + rs.getInt("idExpression") +
+                        " expression : " + rs.getString("expression") +
+                        " result : " + rs.getDouble("result"));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    static public void getExpressionByLessResult(double result){
+        try (Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)) {
+            PreparedStatement ps = conn.prepareStatement(SELECT_EXPRESSION_BY_LESS_RESULT);
+            ps.setDouble(1, result);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println(" idExpression : " + rs.getInt("idExpression") +
+                        " expression : " + rs.getString("expression") +
+                        " result : " + rs.getDouble("result"));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     /** Редактирование выражения по айди*/
     static public void changeExpression(String newExpression, int id){
         try(Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)){

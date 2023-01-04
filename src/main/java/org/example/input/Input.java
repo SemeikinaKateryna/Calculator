@@ -31,9 +31,19 @@ public class Input {
         MySQLDAO.getAllExpression();
         Main.run();
     }
-    public static void methodGetExpressionByID() throws IOException, CalcException {
+    public static void methodGetExpressionByResult() throws IOException, CalcException {
         double res = Double.parseDouble(Input.consoleScanner("Введите искомый результат: "));
         MySQLDAO.getExpressionByResult(res);
+        Main.run();
+    }
+    public static void methodGetExpressionByMoreResult() throws IOException, CalcException {
+        double res = Double.parseDouble(Input.consoleScanner("Введите искомый результат: "));
+        MySQLDAO.getExpressionByMoreResult(res);
+        Main.run();
+    }
+    public static void methodGetExpressionByLessResult() throws IOException, CalcException {
+        double res = Double.parseDouble(Input.consoleScanner("Введите искомый результат: "));
+        MySQLDAO.getExpressionByLessResult(res);
         Main.run();
     }
 
