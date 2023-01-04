@@ -1,8 +1,8 @@
 package org.example.input;
 
-import org.example.Calculator.CalcException;
+import org.example.calculator.CalcException;
 import org.example.Main;
-import org.example.Calculator.Calculator;
+import org.example.calculator.Calculator;
 import org.example.dao.MySQLDAO;
 
 import java.io.IOException;

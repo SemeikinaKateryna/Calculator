@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.Calculator.CalcException;
+import org.example.calculator.CalcException;
 import org.example.input.Input;
 
 import java.io.IOException;

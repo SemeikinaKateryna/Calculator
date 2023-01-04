@@ -1,6 +1,4 @@
-package org.example.Calculator;
-
-import java.text.DecimalFormat;
+package org.example.calculator;
 
 /**
  *  Класс Calculator, основной класс где просходит вычесление выражения

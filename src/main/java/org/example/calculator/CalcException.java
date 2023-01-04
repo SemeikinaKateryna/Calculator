@@ -1,4 +1,4 @@
-package org.example.Calculator;
+package org.example.calculator;
 
 public class CalcException extends Exception{
 

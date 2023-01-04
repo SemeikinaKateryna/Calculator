@@ -1,7 +1,7 @@
 package org.example.dao;
 
-import org.example.Calculator.CalcException;
-import org.example.Calculator.Calculator;
+import org.example.calculator.CalcException;
+import org.example.calculator.Calculator;
 
 import java.sql.*;
 import java.text.DecimalFormat;
