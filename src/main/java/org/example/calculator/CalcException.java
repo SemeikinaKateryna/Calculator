@@ -1,5 +1,9 @@
 package org.example.calculator;
 
+/**
+ *  Класс CalcException для отлавливания ошибок, возникших в ходе вычислений
+ */
+
 public class CalcException extends Exception{
 
     private static final long serialVersionUID = 1L;

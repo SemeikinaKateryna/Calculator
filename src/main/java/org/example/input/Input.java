@@ -8,6 +8,10 @@ import org.example.dao.MySQLDAO;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ *  Класс Input, который содержит вспомагательные методы для ввода текста и вызова функций из Main
+ */
+
 public class Input {
     public static String consoleScanner(String message) {
         Scanner console = new Scanner(System.in);

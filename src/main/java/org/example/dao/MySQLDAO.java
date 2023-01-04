@@ -6,6 +6,10 @@ import org.example.calculator.Calculator;
 import java.sql.*;
 import java.text.DecimalFormat;
 
+/**
+ *  Класс MySQLDAO, который обеспечивает подключение к БД
+ */
+
 public class MySQLDAO{
     private static final String URL = "jdbc:mysql://localhost/calculator?";
     private static final String LOGIN = "root";
