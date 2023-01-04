@@ -6,9 +6,9 @@ package org.example.calculator;
 public class Calculator {
 
     /** Ошибка */
-    final int NONE = 0;       
-    // Разделители(+-*/^=, ")", "(" )
-    final int DELIMITER = 1;     
+    final int NONE = 0;
+    //Разделители (+-*/^=, ")","(" )
+    final int DELIMITER = 1;
     /** переменная */
     final int VARIABLE = 2;    
     /** Число */

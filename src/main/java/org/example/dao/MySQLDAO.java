@@ -7,7 +7,7 @@ import java.sql.*;
 import java.text.DecimalFormat;
 
 /**
- *  Класс MySQLDAO, который обеспечивает подключение к БД
+ *  Класс MySQLDAO, который обеспечивает подключение к БД и содержит функции работы с БД
  */
 
 public class MySQLDAO{
@@ -16,18 +16,12 @@ public class MySQLDAO{
     private static final String PASSWORD = "Katya";
     static String NAME_OF_TABLE_EXPRESSION = "expression";
 
-    /** Получение всех обьектов*/
+    /** Все SQL-запросы, которые будут в дальнейшем использоваться*/
     public static String GET_ALL_EXPRESSION = "SELECT * FROM " + NAME_OF_TABLE_EXPRESSION;
-
-    /** Добавление нового выражения*/
     public static String INSERT_DATA_INTO_EXPRESSION = "INSERT INTO " + NAME_OF_TABLE_EXPRESSION
             + "(expression,result) VALUES(?, ?) ";
-
-    /** Для получения обьекту по заданному параметру*/
     public static String SELECT_EXPRESSION_BY_RESULT = "SELECT * FROM " + NAME_OF_TABLE_EXPRESSION
             + " WHERE result = ?";
-
-    /** Редактирование выражения по айди*/
     public static String UPDATE_EXPRESSION_RESULT = "UPDATE " + NAME_OF_TABLE_EXPRESSION +
             " SET expression = ?, result = ? WHERE idExpression = ?";
 
@@ -39,6 +33,7 @@ public class MySQLDAO{
         }
     }
 
+    /** Получение всех обьектов*/
     static public void getAllExpression() {
         try (Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)) {
             Statement st = conn.createStatement();
@@ -54,6 +49,8 @@ public class MySQLDAO{
             e.printStackTrace();
         }
     }
+
+    /** Добавление нового выражения в таблицу*/
     public static void addExpression(String expression, double result){
         try(Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)){
             PreparedStatement ps = conn.prepareStatement(INSERT_DATA_INTO_EXPRESSION);
@@ -67,6 +64,8 @@ public class MySQLDAO{
             e.printStackTrace();
         }
     }
+
+    /** Получение обьекта по заданному параметру (результату)*/
     static public void getExpressionByResult(double result){
         try (Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)) {
             PreparedStatement ps = conn.prepareStatement(SELECT_EXPRESSION_BY_RESULT);
@@ -83,6 +82,8 @@ public class MySQLDAO{
             e.printStackTrace();
         }
     }
+
+    /** Редактирование выражения по айди*/
     static public void changeExpression(String newExpression, int id){
         try(Connection conn = DriverManager.getConnection(URL, LOGIN, PASSWORD)){
             PreparedStatement ps = conn.prepareStatement(UPDATE_EXPRESSION_RESULT);
